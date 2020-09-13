@@ -1,0 +1,91 @@
+---
+title: "My first R Markdown"
+author: "Koffi"
+date: "2020/8/30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.This text is a part of text I added as Koffi. 
+
+~~strikethrough~~
+
+[google](google.com)
+
+For the following section i will run the codes and keep the results in the document
+
+It failed to successfully run Knit until I run tinytex::install_tinytex() to make it work!
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r hello world}
+#hello world. Just add two elements
+add2 <- function(x,y){
+  x+y
+}
+add2(3,5)
+```
+```{r get values above a given value in a vector}
+above <- function(x,n=10){
+  use <- x > n
+  x[use]
+}
+x = 1:20
+above(x,14)
+
+above(x)
+
+
+```
+
+```{r calculate means of each column in a given matrix}
+colmeans <- function(m,removeNa=TRUE){
+  #get number of columns in the matrix 
+  nc <- ncol(m)
+  #create an empty vectors 
+  means <- numeric(nc)
+  for(i in 1:nc){
+    means[i] = mean(m[,i],na.rm =removeNa)
+  }
+  means
+  
+}
+
+#create the matrix 
+colmeans(airquality)
+colmeans(airquality,FALSE)
+```
+```{r Lazy Evaluation of function}
+#this will produce no error
+f<-function(a,b){
+  print (a)
+}
+f(3)
+
+#this on the other hand will return error only only when tryin to print by
+
+f<-function(a,b){
+  print(a)
+
+}
+f(10)
+```

@@ -1,0 +1,113 @@
+---
+title: "FinalAssignment_week4"
+author: "Koffi"
+date: "2020/9/13"
+output: pdf_document
+---
+## Programming Assigment Week4 
+# Part 1
+```{r}
+source("best.R")
+print(R.version.string)
+```
+# Find the best in hopitals few tests
+```{r r setup, include=TRUE}
+
+best("TX", "heart attack")
+
+best("TX", "heart failure")
+
+best("MD", "heart attack")
+```
+# State error test
+```{r}
+best("BB", "heart attack")
+```
+#Outcome error test
+```{r}
+best("NY", "hert attack")
+```
+# Part 2
+```{r}
+source("rankhospital.R")
+print(R.version.string)
+```
+```{r}
+rankhospital("TX", "heart failure", 4)
+```
+
+```{r}
+rankhospital("MD", "heart attack", "worst")
+```
+
+```{r}
+rankhospital("MN", "heart attack", 5000)
+```
+#Part 3
+```{r}
+source("rankall.R")
+print(R.version.string)
+```
+
+
+
+```{r}
+head(rankall("heart attack", 20), 10)
+```
+
+```{r}
+tail(rankall("pneumonia", "worst"), 3)
+```
+
+```{r}
+tail(rankall("heart failure"), 10)
+```
+
+#Quiz part
+#Question 1
+```{r}
+best("SC", "heart attack")
+```
+
+#Question 2
+```{r}
+best("NY", "pneumonia")
+```
+
+#question 3
+```{r}
+best("AK", "pneumonia")
+```
+
+#question 4
+```{r}
+rankhospital("NC", "heart attack", "worst")
+```
+#question5
+```{r}
+rankhospital("WA", "heart attack", 7)
+```
+#question 6
+```{r}
+rankhospital("TX", "pneumonia", 10)
+```
+
+#question 7
+```{r}
+rankhospital("NY", "heart attack", 7)
+```
+```{r}
+r <- rankall("heart attack", 4)
+as.character(subset(r, state == "HI")$hospital)
+
+```
+```{r}
+r <- rankall("pneumonia", "worst")
+as.character(subset(r, state == "NJ")$hospital)
+```
+
+```{r}
+r <- rankall("heart failure", 10)
+as.character(subset(r, state == "NV")$hospital)
+```
+
